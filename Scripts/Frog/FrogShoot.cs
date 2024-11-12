@@ -6,7 +6,7 @@ public class FrogShoot : MonoBehaviour
     [SerializeField] private BulletSpawner _bulletSpawner;
     [SerializeField] private FrogMovement _frogMovement;
     [SerializeField] private float _bulletSpeed = 10f;
-    [SerializeField] private float _shootDistance = 5f;
+    [SerializeField] private float _shootRange = 5f;
 
     private bool _isShooting = false;
     private int _leftMouseButtonCode = 0;
@@ -32,7 +32,7 @@ public class FrogShoot : MonoBehaviour
         float closestDistance = Mathf.Infinity;
         EnemyBehaviour closestEnemy = null;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(_shootingPoint.position, _shootDistance);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(_shootingPoint.position, _shootRange);
 
         foreach (Collider2D collider in colliders)
         {

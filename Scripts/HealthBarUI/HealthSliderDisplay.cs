@@ -12,19 +12,11 @@ public class HealthSliderDisplay : HealthDisplay
 
     override public void DisplayHealthPoints(float value, float maxPoints)
     {
-        HealthSlider.value = GetClampedValue(value, maxPoints);
+        HealthSlider.value = Mathf.Clamp01(value / maxPoints);
     }
 
     override public void Deactivate()
     {
         HealthSlider.gameObject.SetActive(false);
-    }
-
-    protected float GetClampedValue(float value, float maxPoints)
-    {
-        float minSliderValue = 0;
-        float maxSliderValue = 1;
-
-        return Mathf.Clamp(value / maxPoints, minSliderValue, maxSliderValue);
     }
 }

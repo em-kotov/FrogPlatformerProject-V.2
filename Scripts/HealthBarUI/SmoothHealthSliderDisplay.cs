@@ -8,7 +8,7 @@ public class SmoothHealthSliderDisplay : HealthSliderDisplay
 
     override public void DisplayHealthPoints(float value, float maxPoints)
     {
-        ActivateSmoothValueMove(GetClampedValue(value, maxPoints));
+        ActivateSmoothValueMove(Mathf.Clamp01(value / maxPoints));
     }
 
     override public void Deactivate()

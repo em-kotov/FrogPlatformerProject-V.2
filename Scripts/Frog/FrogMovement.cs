@@ -51,7 +51,7 @@ public class FrogMovement : MonoBehaviour
 
     private void Run()
     {
-        _rigidbody.velocity = new Vector2(_direction * _runSpeed, _rigidbody.velocity.y);
+        _rigidbody.linearVelocity = new Vector2(_direction * _runSpeed, _rigidbody.linearVelocity.y);
 
         UpdateFlip();
     }
@@ -83,7 +83,7 @@ public class FrogMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        float speed = Mathf.Abs(_rigidbody.velocity.x);
+        float speed = Mathf.Abs(_rigidbody.linearVelocity.x);
         SpeedChanged?.Invoke(speed);
         IsGroundedChanged?.Invoke(IsGrounded());
     }
@@ -92,7 +92,7 @@ public class FrogMovement : MonoBehaviour
     {
         if (_canJump)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
+            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, _jumpForce);
             _canJump = false;
         }
     }
