@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform _waypointMain;
+    [SerializeField] private Health _health;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _detectDistance = 3f;
     [SerializeField] private float _chaseDistance = 3f;
@@ -11,6 +12,8 @@ public class EnemyBehaviour : MonoBehaviour
     private Transform _frog = null;
     private int _waypointIndex = 0;
     private bool _canChase = false;
+
+    public bool IsAlive => _health.HasPoints();
 
     private void Start()
     {
@@ -30,6 +33,17 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Patrol();
         }
+    }
+
+    public void LoosePoints(float damage)
+    {
+        _health.LoosePoints(damage);
+    }
+
+    public bool CanAcceptAllDamage(float pointsToLoose, out float pointsAccepted)
+    {
+        pointsAccepted = _health.Points;
+        return _health.Points >= pointsToLoose;
     }
 
     private void AddWaypoints()
@@ -63,7 +77,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.TryGetComponent(out FrogShoot frog))
+            if (collider.TryGetComponent(out Shoot frog))
             {
                 _frog = frog.transform;
                 _canChase = true;

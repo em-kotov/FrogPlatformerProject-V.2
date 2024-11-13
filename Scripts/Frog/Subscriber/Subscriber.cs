@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class FrogSubscriber : MonoBehaviour
+public class Subscriber : MonoBehaviour
 {
     [SerializeField] private HealthCollisionRegister _healthCollisionRegister;
     [SerializeField] private Health _health;
-    [SerializeField] private FrogMovement _movement;
+    [SerializeField] private PhysicsHandler _physicsHandler;
     [SerializeField] private FrogAnimator _animator;
     [SerializeField, Range(0f, 100f)] private float _addedPoints = 10;
     [SerializeField, Range(0f, 100f)] private float _lostPoints = 10;
@@ -15,8 +15,8 @@ public class FrogSubscriber : MonoBehaviour
         _healthCollisionRegister.HealRegistered += HandleHeal;
         _health.LostPoints += _animator.PlayHitAnimation;
         _health.HasDied += _animator.SetDeathAnimation;
-        _movement.SpeedChanged += _animator.UpdateSpeed;
-        _movement.IsGroundedChanged += _animator.UpdateJump;
+        _physicsHandler.SpeedChanged += _animator.UpdateSpeed;
+        _physicsHandler.IsGroundedChanged += _animator.UpdateJump;
     }
 
     private void OnDisable()
@@ -25,8 +25,8 @@ public class FrogSubscriber : MonoBehaviour
         _healthCollisionRegister.HealRegistered -= HandleHeal;
         _health.LostPoints -= _animator.PlayHitAnimation;
         _health.HasDied -= _animator.SetDeathAnimation;
-        _movement.SpeedChanged -= _animator.UpdateSpeed;
-        _movement.IsGroundedChanged -= _animator.UpdateJump;
+        _physicsHandler.SpeedChanged -= _animator.UpdateSpeed;
+        _physicsHandler.IsGroundedChanged -= _animator.UpdateJump;
     }
 
     private void HandleHit()

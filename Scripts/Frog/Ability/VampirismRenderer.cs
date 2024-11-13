@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class VampirismSlider : MonoBehaviour
+public class VampirismRenderer : MonoBehaviour
 {
     [SerializeField] private Vampirism _vampirism;
     [SerializeField] private Slider _slider;
     [SerializeField] private Health _health;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private Coroutine _smoothValueMoveCoroutine;
     private float _emptySliderValue = 0f;
@@ -16,6 +17,7 @@ public class VampirismSlider : MonoBehaviour
     {
         _slider.interactable = false;
         _slider.value = _fullSliderValue;
+        DrawAbility(false);
     }
 
     private void OnEnable()
@@ -34,17 +36,24 @@ public class VampirismSlider : MonoBehaviour
 
     private void HandleCooldown(float duration)
     {
+        DrawAbility(false);
         ActivateSmoothValueMove(_emptySliderValue, _fullSliderValue, duration);
     }
 
     private void HandleActivation(float duration)
     {
+        DrawAbility(true);
         ActivateSmoothValueMove(_fullSliderValue, _emptySliderValue, duration);
     }
 
     private void Deactivate()
     {
         _slider.gameObject.SetActive(false);
+    }
+
+    private void DrawAbility(bool isVisible)
+    {
+        _spriteRenderer.enabled = isVisible;
     }
 
     private void ActivateSmoothValueMove(float startValue, float targetValue, float targetTime)

@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     public event Action HasDied;
     public event Action LostPoints;
 
+    public float Points => _points;
+
     private void Start()
     {
         SetCurrentHealth(_maxPoints);
@@ -34,6 +36,17 @@ public class Health : MonoBehaviour
         SetCurrentHealth(GetClampedPoints(_points + addedPoints));
     }
 
+    public bool HasPoints()
+    {
+        return _points > 0;
+    }
+
+    // public bool CanAcceptAllDamage(float pointsToLoose, out float pointsAccepted)
+    // {
+    //     pointsAccepted = _points;
+    //     return _points >= pointsToLoose;
+    // }
+
     private void SetCurrentHealth(float points)
     {
         _points = points;
@@ -54,11 +67,6 @@ public class Health : MonoBehaviour
     private void InvokePointsChanged()
     {
         PointsChanged?.Invoke(_points, _maxPoints);
-    }
-
-    private bool HasPoints()
-    {
-        return _points > 0;
     }
 
     private void InvokeHasDied()

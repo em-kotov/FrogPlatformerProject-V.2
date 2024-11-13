@@ -488,6 +488,7 @@ MonoBehaviour:
   _vampirism: {fileID: 1076505604}
   _slider: {fileID: 1889401320}
   _health: {fileID: 1575583443}
+  _spriteRenderer: {fileID: 2113465812}
 --- !u!1 &420379776
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypointMain: {fileID: 1115067748}
+  _health: {fileID: 871440303}
   _speed: 1
   _detectDistance: 3
   _chaseDistance: 3
@@ -1898,6 +1900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypointMain: {fileID: 1824189179}
+  _health: {fileID: 651135893}
   _speed: 1
   _detectDistance: 3
   _chaseDistance: 3
@@ -2310,6 +2313,9 @@ GameObject:
   - component: {fileID: 1076505603}
   - component: {fileID: 1076505602}
   - component: {fileID: 1076505604}
+  - component: {fileID: 1076505605}
+  - component: {fileID: 1076505606}
+  - component: {fileID: 1076505607}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -2491,9 +2497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c631c812d4a3e4baa5268c589d70f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 4.9
-  _jumpForce: 7
-  _groundCheck: {fileID: 225349641}
+  _mover: {fileID: 1076505607}
+  _inputReader: {fileID: 1076505605}
+  _groundDetector: {fileID: 1076505606}
 --- !u!114 &1076505596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2508,7 +2514,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 1977785803}
   _bulletSpawner: {fileID: 1385289262}
-  _frogMovement: {fileID: 1076505594}
+  _physicsHandler: {fileID: 1076505594}
+  _inputReader: {fileID: 1076505605}
   _bulletSpeed: 10
   _shootRange: 5
 --- !u!114 &1076505600
@@ -2538,7 +2545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthCollisionRegister: {fileID: 1076505603}
   _health: {fileID: 1575583443}
-  _movement: {fileID: 1076505594}
+  _physicsHandler: {fileID: 1076505594}
   _animator: {fileID: 1076505600}
   _addedPoints: 10
   _lostPoints: 10
@@ -2578,8 +2585,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1342125ebda45945a73cfe890463c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frogHealth: {fileID: 1575583443}
-  _abilityRenderer: {fileID: 2113465812}
+  _health: {fileID: 1575583443}
+  _physicsHandler: {fileID: 1076505594}
+  _inputReader: {fileID: 1076505605}
+--- !u!114 &1076505605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076505588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d4533b4cae76342a8b1ad72f230cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1076505606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076505588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a570b3e1b9a671d4ab779d00e13c434a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundCheck: {fileID: 225349641}
+--- !u!114 &1076505607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076505588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f448265b5e8884b99d4980d5da42c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _runSpeed: 4.9
+  _jumpForce: 7
 --- !u!1 &1094616068
 GameObject:
   m_ObjectHideFlags: 0
