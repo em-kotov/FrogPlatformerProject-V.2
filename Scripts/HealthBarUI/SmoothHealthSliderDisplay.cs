@@ -37,13 +37,13 @@ public class SmoothHealthSliderDisplay : HealthSliderDisplay
         _isMoving = true;
         float passedTime = 0f;
         float targetTime = 0.6f;
-        float clampedTime;
+        float timeProgress;
 
         while (passedTime < targetTime)
         {
             passedTime += Time.deltaTime;
-            clampedTime = Mathf.Clamp01(passedTime / targetTime);
-            HealthSlider.value = Mathf.Lerp(startValue, targetValue, clampedTime);
+            timeProgress = Mathf.Clamp01(passedTime / targetTime);
+            HealthSlider.value = Mathf.Lerp(startValue, targetValue, timeProgress);
             yield return null;
         }
 

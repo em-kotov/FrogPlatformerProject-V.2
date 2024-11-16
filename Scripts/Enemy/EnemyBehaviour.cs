@@ -13,7 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     private int _waypointIndex = 0;
     private bool _canChase = false;
 
-    public bool IsAlive => _health.HasPoints();
+    public float HealthPoints => _health.Points;
 
     private void Start()
     {
@@ -38,12 +38,6 @@ public class EnemyBehaviour : MonoBehaviour
     public void LoosePoints(float damage)
     {
         _health.LoosePoints(damage);
-    }
-
-    public bool CanAcceptAllDamage(float pointsToLoose, out float pointsAccepted)
-    {
-        pointsAccepted = _health.Points;
-        return _health.Points >= pointsToLoose;
     }
 
     private void AddWaypoints()
@@ -73,7 +67,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void DetectFrog()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _detectDistance);
+        int frogLayerIndex = 6;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _detectDistance,
+                                        LayerMaskConverter.GetLayerMask(frogLayerIndex));
 
         foreach (Collider2D collider in colliders)
         {
@@ -92,9 +88,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void UpdateTarget()
     {
-        float distance = Vector2.Distance(transform.position, _frog.position);
-
-        if (distance > _chaseDistance)
+        if (Vector3Extensions.IsEnoughClose(transform.position, _frog.position, _chaseDistance) == false)
         {
             _frog = null;
             _canChase = false;

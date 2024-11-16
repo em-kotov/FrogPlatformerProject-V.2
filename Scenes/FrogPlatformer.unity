@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183833746}
   - component: {fileID: 183833747}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MedkitSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225349641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,28 +452,12 @@ MonoBehaviour:
   _worldSpaceCanvas: {fileID: 391116685}
   _targetToFollow: {fileID: 1076505591}
   _offset: {x: 0, y: 1.6, z: 0}
-  _useSmoothing: 0
-  _smoothSpeed: 10
---- !u!114 &391116682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391116680}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3af2f78369324af7b8711cb57c0fef7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: {fileID: 1575583443}
-  HealthSlider: {fileID: 1889401320}
 --- !u!223 &391116685 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 6053742324416633197, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
   m_PrefabInstance: {fileID: 994198588}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &391116686
+--- !u!114 &391116690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -482,13 +466,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 391116680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319a166f9cc797647a8e77b75b81f1b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ae208b74ebd4b447ba606497f33d80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vampirism: {fileID: 1076505604}
   _slider: {fileID: 1889401320}
   _health: {fileID: 1575583443}
-  _spriteRenderer: {fileID: 2113465812}
 --- !u!1 &420379776
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +522,7 @@ GameObject:
   - component: {fileID: 537776947}
   - component: {fileID: 537776946}
   - component: {fileID: 537776945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1065,7 @@ GameObject:
   - component: {fileID: 659321735}
   - component: {fileID: 659321737}
   - component: {fileID: 659321738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1227,7 @@ GameObject:
   - component: {fileID: 662375033}
   - component: {fileID: 662375032}
   - component: {fileID: 662375031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Strawberry (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1540,7 @@ GameObject:
   - component: {fileID: 894162935}
   - component: {fileID: 894162934}
   - component: {fileID: 894162933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Strawberry (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1723,7 +1706,7 @@ GameObject:
   - component: {fileID: 968492908}
   - component: {fileID: 968492907}
   - component: {fileID: 968492909}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2023,7 +2006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4453333837425879855, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
       propertyPath: m_Name
-      value: FrogAbilityCanvas
+      value: FrogManaCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 4453333837425879855, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
       propertyPath: m_IsActive
@@ -2111,7 +2094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6624238504028720648, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
       propertyPath: m_Name
-      value: AbilityBarSmoothSlider
+      value: ManaBarSmoothSlider
       objectReference: {fileID: 0}
     - target: {fileID: 6820624066974797879, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
       propertyPath: m_Type
@@ -2147,13 +2130,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4453333837425879855, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 391116682}
-    - targetCorrespondingSourceObject: {fileID: 4453333837425879855, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 391116681}
     - targetCorrespondingSourceObject: {fileID: 4453333837425879855, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 391116686}
+      addedObject: {fileID: 391116690}
   m_SourcePrefab: {fileID: 100100000, guid: 5e9f61238f1bd4769b36e33cd2096b35, type: 3}
 --- !u!1001 &1048697541
 PrefabInstance:
@@ -2316,7 +2296,9 @@ GameObject:
   - component: {fileID: 1076505605}
   - component: {fileID: 1076505606}
   - component: {fileID: 1076505607}
-  m_Layer: 0
+  - component: {fileID: 1076505608}
+  - component: {fileID: 1076505609}
+  m_Layer: 6
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2500,6 +2482,12 @@ MonoBehaviour:
   _mover: {fileID: 1076505607}
   _inputReader: {fileID: 1076505605}
   _groundDetector: {fileID: 1076505606}
+  _enemyDetector: {fileID: 1076505608}
+  _shoot: {fileID: 1076505596}
+  _vampirism: {fileID: 1076505604}
+  _health: {fileID: 1575583443}
+  _addedPoints: 10
+  _lostPoints: 10
 --- !u!114 &1076505596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,8 +2502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingPoint: {fileID: 1977785803}
   _bulletSpawner: {fileID: 1385289262}
-  _physicsHandler: {fileID: 1076505594}
-  _inputReader: {fileID: 1076505605}
   _bulletSpeed: 10
   _shootRange: 5
 --- !u!114 &1076505600
@@ -2545,10 +2531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthCollisionRegister: {fileID: 1076505603}
   _health: {fileID: 1575583443}
-  _physicsHandler: {fileID: 1076505594}
+  _frog: {fileID: 1076505594}
   _animator: {fileID: 1076505600}
-  _addedPoints: 10
-  _lostPoints: 10
 --- !u!114 &1076505602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2586,8 +2570,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1575583443}
-  _physicsHandler: {fileID: 1076505594}
-  _inputReader: {fileID: 1076505605}
+  _enemyDetector: {fileID: 1076505608}
+  _abilityDuration: 6
+  _cooldownDuration: 4
+  _abilityRange: 5
+  _tickDamage: 4
+  _timeBetweenTicks: 1
 --- !u!114 &1076505605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2627,6 +2615,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runSpeed: 4.9
   _jumpForce: 7
+--- !u!114 &1076505608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076505588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4017e0f073c1b945a2eed100cd74b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1076505609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076505588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319a166f9cc797647a8e77b75b81f1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vampirism: {fileID: 1076505604}
+  _spriteRenderer: {fileID: 2113465812}
 --- !u!1 &1094616068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,7 +3007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1385289263}
   - component: {fileID: 1385289262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3044,7 +3058,7 @@ GameObject:
   - component: {fileID: 1550680949}
   - component: {fileID: 1550680950}
   - component: {fileID: 1550680951}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3780,7 +3794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1572289700}
   - component: {fileID: 1572289701}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InventoryDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3826,7 +3840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1575583442}
   - component: {fileID: 1575583443}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4231,7 +4245,7 @@ GameObject:
   - component: {fileID: 1977496215}
   - component: {fileID: 1977496214}
   - component: {fileID: 1977496213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Strawberry (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4389,7 +4403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1977785803}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4436,8 +4450,6 @@ MonoBehaviour:
   _worldSpaceCanvas: {fileID: 2002630142}
   _targetToFollow: {fileID: 968492903}
   _offset: {x: 0, y: 1.5, z: 0}
-  _useSmoothing: 0
-  _smoothSpeed: 10
 --- !u!114 &2002630144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4477,8 +4489,6 @@ MonoBehaviour:
   _worldSpaceCanvas: {fileID: 2048213314}
   _targetToFollow: {fileID: 537776938}
   _offset: {x: 0, y: 1.5, z: 0}
-  _useSmoothing: 0
-  _smoothSpeed: 10
 --- !u!114 &2048213316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4503,8 +4513,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2113465813}
   - component: {fileID: 2113465812}
-  m_Layer: 0
-  m_Name: AbilityRenderer
+  m_Layer: 6
+  m_Name: VampirismRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4590,7 +4600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2127200223}
   - component: {fileID: 2127200222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MedkitSpawner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4812,8 +4822,6 @@ MonoBehaviour:
   _worldSpaceCanvas: {fileID: 7533623767636024508}
   _targetToFollow: {fileID: 1076505591}
   _offset: {x: 0, y: 1.15, z: 0}
-  _useSmoothing: 0
-  _smoothSpeed: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

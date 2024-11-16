@@ -4,24 +4,32 @@ public class Shoot : MonoBehaviour
 {
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private BulletSpawner _bulletSpawner;
-    [SerializeField] private PhysicsHandler _physicsHandler;
-    [SerializeField] private InputReader _inputReader;
     [SerializeField] private float _bulletSpeed = 10f;
     [SerializeField] private float _shootRange = 5f;
 
-    private void FixedUpdate()
+    public float ShootRange => _shootRange;
+    public Vector2 ShootingPoint => _shootingPoint.position;
+
+    public void MakeOneShot(Vector2 targetDirection)
     {
-        if (_inputReader.IsShooting())
-            MakeOneShot(GetShootingDirection(_physicsHandler.GetClosestEnemy(_shootRange, _shootingPoint.position)));
+        Bullet bullet = _bulletSpawner.Spawn();
+
+        if (bullet.TryGetComponent(out Rigidbody2D bulletRigidbody))
+        {
+            bulletRigidbody.position = _shootingPoint.position;
+            bulletRigidbody.AddForce(targetDirection * _bulletSpeed, ForceMode2D.Impulse);
+        }
+
+        StartCoroutine(_bulletSpawner.StartDeactivation(bullet));
     }
 
-    private Vector2 GetShootingDirection(EnemyBehaviour closestEnemy)
+    public Vector2 GetShootingDirection(EnemyBehaviour closestEnemy, bool isFacingRight)
     {
         Vector2 shootingDirection;
         Vector2 rightDirection = new Vector2(0.8f, 0.8f);
         Vector2 leftDirection = new Vector2(-0.8f, 0.8f);
 
-        if (_physicsHandler.IsFacingRight())
+        if (isFacingRight)
             shootingDirection = rightDirection;
         else
             shootingDirection = leftDirection;
@@ -33,18 +41,5 @@ public class Shoot : MonoBehaviour
         }
 
         return shootingDirection;
-    }
-
-    private void MakeOneShot(Vector2 targetDirection)
-    {
-        Bullet bullet = _bulletSpawner.Spawn();
-
-        if (bullet.TryGetComponent(out Rigidbody2D bulletRigidbody))
-        {
-            bulletRigidbody.position = _shootingPoint.position;
-            bulletRigidbody.AddForce(targetDirection * _bulletSpeed, ForceMode2D.Impulse);
-        }
-
-        StartCoroutine(_bulletSpawner.StartDeactivation(bullet));
     }
 }

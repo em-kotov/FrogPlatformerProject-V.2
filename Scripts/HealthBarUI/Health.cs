@@ -5,14 +5,13 @@ public class Health : MonoBehaviour
 {
     [SerializeField, Range(0f, 100f)] private float _maxPoints = 100;
 
-    private float _points;
     private float _minPoints = 0;
 
     public event Action<float, float> PointsChanged;
     public event Action HasDied;
     public event Action LostPoints;
 
-    public float Points => _points;
+    public float Points { get; private set; }
 
     private void Start()
     {
@@ -25,7 +24,7 @@ public class Health : MonoBehaviour
             return;
 
         LostPoints?.Invoke();
-        SetCurrentHealth(GetClampedPoints(_points - lostPoints));
+        SetCurrentHealth(GetClampedPoints(Points - lostPoints));
     }
 
     public void AddPoints(float addedPoints)
@@ -33,23 +32,12 @@ public class Health : MonoBehaviour
         if (IsNegative(addedPoints))
             return;
 
-        SetCurrentHealth(GetClampedPoints(_points + addedPoints));
+        SetCurrentHealth(GetClampedPoints(Points + addedPoints));
     }
-
-    public bool HasPoints()
-    {
-        return _points > 0;
-    }
-
-    // public bool CanAcceptAllDamage(float pointsToLoose, out float pointsAccepted)
-    // {
-    //     pointsAccepted = _points;
-    //     return _points >= pointsToLoose;
-    // }
 
     private void SetCurrentHealth(float points)
     {
-        _points = points;
+        Points = points;
         InvokePointsChanged();
         InvokeHasDied();
     }
@@ -66,12 +54,12 @@ public class Health : MonoBehaviour
 
     private void InvokePointsChanged()
     {
-        PointsChanged?.Invoke(_points, _maxPoints);
+        PointsChanged?.Invoke(Points, _maxPoints);
     }
 
     private void InvokeHasDied()
     {
-        if (HasPoints() == false)
+        if (Points <= 0)
             HasDied?.Invoke();
     }
 }
