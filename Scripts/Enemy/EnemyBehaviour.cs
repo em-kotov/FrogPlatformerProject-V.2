@@ -73,7 +73,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.TryGetComponent(out Shoot frog))
+            if (collider.TryGetComponent(out Frog frog))
             {
                 _frog = frog.transform;
                 _canChase = true;

@@ -8,16 +8,16 @@ public class Vampirism : MonoBehaviour
     [SerializeField] private EnemyDetector _enemyDetector;
     [SerializeField] private float _abilityDuration = 6f;
     [SerializeField] private float _cooldownDuration = 4f;
-    [SerializeField] private float _abilityRange = 5f;
+    [SerializeField] private float _range = 5f;
     [SerializeField] private float _tickDamage = 4f;
     [SerializeField] private float _timeBetweenTicks = 1f;
 
     public event Action<float> AbilityProgressStarted;
     public event Action<float> CooldownProgressStarted;
-    public event Action AbilityEffectStarted;
-    public event Action AbilityEffectEnded;
+    public event Action VisualEffectStarted;
+    public event Action VisualEffectEnded;
 
-    public bool AbilityIsReady { get; private set; } = true;
+    public bool IsReady { get; private set; } = true;
 
     public void StartDrainHealthCoroutine()
     {
@@ -26,7 +26,7 @@ public class Vampirism : MonoBehaviour
 
     private void DrainHealthOneTick()
     {
-        EnemyBehaviour enemy = _enemyDetector.GetClosestEnemy(_abilityRange, transform.position);
+        EnemyBehaviour enemy = _enemyDetector.GetClosestEnemy(_range, transform.position);
 
         if (enemy != null)
         {
@@ -42,12 +42,12 @@ public class Vampirism : MonoBehaviour
 
     private IEnumerator DrainHealth()
     {
-        AbilityIsReady = false;
+        IsReady = false;
         float passedTime = 0;
         WaitForSeconds waitBetweenTicks = new WaitForSeconds(_timeBetweenTicks);
 
         AbilityProgressStarted?.Invoke(_abilityDuration);
-        AbilityEffectStarted?.Invoke();
+        VisualEffectStarted?.Invoke();
 
         while (passedTime < _abilityDuration)
         {
@@ -56,7 +56,7 @@ public class Vampirism : MonoBehaviour
             yield return waitBetweenTicks;
         }
 
-        AbilityEffectEnded?.Invoke();
+        VisualEffectEnded?.Invoke();
         StartCoroutine(Cooldown());
     }
 
@@ -64,6 +64,6 @@ public class Vampirism : MonoBehaviour
     {
         CooldownProgressStarted?.Invoke(_cooldownDuration);
         yield return new WaitForSeconds(_cooldownDuration);
-        AbilityIsReady = true;
+        IsReady = true;
     }
 }

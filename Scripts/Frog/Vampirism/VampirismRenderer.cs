@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class VampirismRenderer : MonoBehaviour
 {
-    [SerializeField] private Vampirism _vampirism;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private void Awake()
@@ -10,24 +9,12 @@ public class VampirismRenderer : MonoBehaviour
         DrawAbility(false);
     }
 
-    private void OnEnable()
-    {
-        _vampirism.AbilityEffectStarted += OnAbilityStarted;
-        _vampirism.AbilityEffectEnded += OnAbilityEnded;
-    }
-
-    private void OnDisable()
-    {
-        _vampirism.AbilityEffectStarted -= OnAbilityStarted;
-        _vampirism.AbilityEffectEnded -= OnAbilityEnded;
-    }
-
-    private void OnAbilityStarted()
+    public void OnAbilityStarted()
     {
         DrawAbility(true);
     }
 
-    private void OnAbilityEnded()
+    public void OnAbilityEnded()
     {
         DrawAbility(false);
     }

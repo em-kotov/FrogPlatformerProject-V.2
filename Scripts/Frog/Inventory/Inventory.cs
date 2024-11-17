@@ -7,18 +7,18 @@ public class Inventory : MonoBehaviour
 
     public int StrawberryValue { get; private set; } = 0;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnMedkitFound(Medkit medkit)
     {
-        if (other.TryGetComponent(out Strawberry strawberry) && strawberry.CanCollect)
-        {
-            AddStrawberry();
-            strawberry.DeactivateWithEffect();
-        }
+        medkit.Deactivate();
     }
 
-    private void AddStrawberry()
+    public void OnStrawberryFound(Strawberry strawberry)
     {
-        StrawberryValue++;
-        StrawberryValueChanged?.Invoke(StrawberryValue);
+        if (strawberry.CanCollect)
+        {
+            strawberry.DeactivateWithEffect();
+            StrawberryValue++;
+            StrawberryValueChanged?.Invoke(StrawberryValue);
+        }
     }
 }

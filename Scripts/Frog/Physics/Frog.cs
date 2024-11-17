@@ -59,7 +59,7 @@ public class Frog : MonoBehaviour
 
     private void ActivateVampirism()
     {
-        if (_inputReader.IsAbilityPressed() && _vampirism.AbilityIsReady)
+        if (_inputReader.IsAbilityPressed() && _vampirism.IsReady)
             _vampirism.StartDrainHealthCoroutine();
     }
 }
